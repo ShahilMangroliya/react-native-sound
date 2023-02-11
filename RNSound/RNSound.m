@@ -146,6 +146,14 @@ RCT_EXPORT_METHOD(setMode : (NSString *)modeName) {
     }
 }
 
+RCT_EXPORT_METHOD(setTBTCategory) {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+            [session setCategory:AVAudioSessionCategoryPlayback
+                     withOptions:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers |
+                                 AVAudioSessionCategoryOptionDuckOthers
+                           error:nil];
+}
+
 RCT_EXPORT_METHOD(setCategory
                   : (NSString *)categoryName mixWithOthers
                   : (BOOL)mixWithOthers) {
